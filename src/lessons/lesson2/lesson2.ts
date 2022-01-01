@@ -21,19 +21,39 @@ console.log('lesson 2');
 // https://www.youtube.com/watch?v=Kuq6oIN3PH0
 
 
-// Task 01
+// Task 01+
 // Реализовать функцию sum которая суммирует 2 числа следующим образом sum(3)(6) === 9
 
-// Task 02
-// Реализовать функцию makeCounter которая работает следующим образом:
-// const counter = makeCounter();
-// counter(); // 1
-// counter(); // 2
-// const counter2 = makeCounter();
-// counter2(); // 1
-// counter(); // 3
+/*function sum(num: number){
+    function secondSum (secondNum: number){
+        return secondNum + num;
+    }
+    return secondSum;
+}
+console.log(sum(3)(6));*/
 
-// Task 03
+// Task 02+
+// Реализовать функцию makeCounter которая работает следующим образом:
+
+/*function makeCounter(){
+    let a = 0;
+    function helper(){
+        return a += 1;
+    }
+    return helper;
+}
+const counter = makeCounter();
+//@ts-ignore;
+console.log(counter()); //1
+//@ts-ignore;
+console.log(counter()); // 2
+const counter2 = makeCounter();
+// //@ts-ignore;
+console.log(counter2()); // 1
+// //@ts-ignore;
+console.log(counter()); // 3*/
+
+// Task 03+
 // Переписать функцию из Task 02 так, что бы она принимала число в качестве аргумента и это число было стартовым значением счетчика
 // и возвращала следующий объект методов:
 // increase: +1
@@ -41,7 +61,32 @@ console.log('lesson 2');
 // reset: установить счетчик в 0;
 // set: установить счетчик в заданное значение;
 
-// Task 04*
+/*function makeCounter(num: number){
+    return {
+        increase(){
+            num += 1;
+            return num;
+        },
+        decrease(){
+            num -= 1;
+            return num;
+        },
+        reset(){
+            num = 0;
+            return num;
+        },
+        set(newValue:number){
+            num = newValue;
+            return num;
+        },
+    };
+}
+console.log(makeCounter(5).increase());
+console.log(makeCounter(5).decrease());
+console.log(makeCounter(5).reset());
+console.log(makeCounter(5).set(10));*/
+
+// Task 04*+
 // Реализовать функцию superSum которая принимает число в качестве аргумента, которое указывает на количество слагаемых
 // и что бы корректно работали следующие вызовы:
 // 1) superSum(0) //0
@@ -50,14 +95,63 @@ console.log('lesson 2');
 // 4) superSum(3)(2,5,3) //10
 // 5) superSum(3)(2,5)(3) //10
 // 6) superSum(3)(2,5)(3,9) //10
-
 // P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
+
+/*function superSum(num: number) {
+    if (num <= 0) return 0;
+    if (num === 1) return (n:number) => n;
+
+    let _arguments: number[] = [];
+
+    function helper(...args:number[]){
+        _arguments = [..._arguments, ...args];
+        if(_arguments.length >= num){
+            _arguments.length = num;
+            return _arguments.reduce((acc, number) => acc + number);
+        } else {
+            return helper;
+        }
+    }
+    return helper;
+}
+console.log(superSum(0));
+//@ts-ignore
+console.log(superSum(3)(2)(5)(3));
+//@ts-ignore
+console.log(superSum(3)(2)(5,3));
+//@ts-ignore
+console.log(superSum(3)(2,5,3));
+//@ts-ignore
+console.log(superSum(3)(2,5)(3));
+//@ts-ignore
+console.log(superSum(3)(2,5)(3,9));
+*/
 
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
+/*//@ts-ignore
+function sumTo(num:number){
+    if(num === 1){
+        return num;
+    } else {
+        return num + sumTo(num - 1);
+    }
+}
+console.log(sumTo(100))*/
+
+/*//@ts-ignore
+function factorial(num:number){
+    if(num === 1){
+        return num;
+    } else {
+        return num * factorial(num-1)
+    }
+}
+console.log(factorial(5));*/
 
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
 // just a plug
-export default () => {};
+export default () => {
+};
