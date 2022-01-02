@@ -10,12 +10,28 @@ const Lesson3 = () => {
 
     const searchFilm = () => {
         API.searchFilmsByTitle(searchName)
+            .then(data => {
+                //debugger;
+                if (data.Response === 'True'){
+                    return setSerachResult(`Title: ${data.Title}, Imdb Rating: ${data.imdbRating}`);
+                } else {
+                    return setSerachResult(data.Error);
+                }
+            })
     };
 
     const searchByType = (e: React.MouseEvent<HTMLButtonElement>) => {
         const type: string = e.currentTarget.dataset.t ? e.currentTarget.dataset.t : '';
         API.searchFilmsByType(searchNameByType, type)
-    }
+            .then(data => {
+                //debugger;
+                if (data.Response === 'True'){
+                    return setSerachResultByType(`Title: ${data.Title}, Imdb Rating: ${data.imdbRating}`);
+                } else {
+                    return setSerachResultByType(data.Error);
+                }
+            })
+    };
 
     return (
         <div>

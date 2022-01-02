@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const configOMB = {
     baseURL: 'http://www.omdbapi.com/',
 };
@@ -9,11 +8,16 @@ const axiosInstance = axios.create(configOMB);
 
 const API = {
     searchFilmsByTitle: (title: string) => {
-        return axiosInstance.get(`?apikey=${key}&t==${title}`)
-            .then(response => response.data)
-            .catch(err => console.log(err));
+        return axiosInstance.get(`?apikey=${key}&t=${title}`)
+            .then(request => {
+                //debugger;
+                return request.data})
     },
     searchFilmsByType: (title: string, type: string) => {
+        return axiosInstance.get(`?apikey=${key}&t=${title}&type=${type}`)
+            .then(request => {
+                debugger;
+                return request.data})
     }
 };
 
