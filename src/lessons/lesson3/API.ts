@@ -16,7 +16,7 @@ const API = {
     searchFilmsByType: (title: string, type: string) => {
         return axiosInstance.get(`?apikey=${key}&t=${title}&type=${type}`)
             .then(request => {
-                debugger;
+                //debugger;
                 return request.data})
     }
 };
