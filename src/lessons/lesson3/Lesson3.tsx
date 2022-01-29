@@ -13,7 +13,7 @@ const Lesson3 = () => {
             .then(data => {
                 //debugger;
                 if (data.Response === 'True'){
-                    return setSerachResult(`Title: ${data.Title}, Imdb Rating: ${data.imdbRating}`);
+                    return setSerachResult(`Title: ${JSON.stringify(data.Search)}`);
                 } else {
                     return setSerachResult(data.Error);
                 }

@@ -7,26 +7,34 @@ console.log('lesson 4');
 // Task 01
 // Создайте промис, который постоянно находиться в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
-
+// new Promise ( (res, rej) => {
+//     console.log("Promise is created");
+// })
 
 // Task 02
 // Создайте промис, который после создания сразу же переходит в состояние resolve
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
-
+// Promise.resolve('Promise Data')
+//     .then(data => console.log(data))
 
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
-
+// Promise.reject('Promise Error')
+//     .catch(err => console.log(err))
 
 // Task 04
 // Создайте промис, который переходит в состояние resolved через 3с.
 // (Используйте setTimeout)
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
-
+// new Promise(res => {
+//     setTimeout(()=>{
+//         res("Promise Data with timeout 3s")
+//     },3000)
+// }).then(data => console.log(data))
 
 // Task 05
 // Создайте литерал объекта handlePromise со следующими свойствами:
@@ -40,6 +48,53 @@ console.log('lesson 4');
 // описаного выше объекта: свойство promise получает новый созданный промис,
 // свойства resolve и reject получают ссылки на соответствующие функции
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
+type objType = {
+    promise: null | Promise<any>;
+    resolve: null | Function;
+    reject: null | Function;
+    onSuccess: (paramName: string) => void;
+    onError: (paramName: string) => void;
+};
+
+const handlePromise:objType = {
+    promise: null,
+    resolve: null,
+    reject: null,
+    onSuccess(paramName){
+        console.log(`Promise is resolved with data: ${paramName}`);
+    },
+    onError(paramName){
+        console.log(`Promise is rejected with error: ${paramName}`);
+    }
+}
+
+export const createPromise = () => {
+    handlePromise.promise = new Promise((res, rej) => {
+        handlePromise.resolve = res;
+        handlePromise.reject = rej;
+    })
+    handlePromise.promise
+        .then(handlePromise.onSuccess)
+        .catch(handlePromise.onError)
+    //@ts-ignore
+    window.value = handlePromise;
+}
+export const resolvePromise = () => {
+    handlePromise.resolve && handlePromise.resolve('Success');
+}
+export const rejectPromise = () => {
+    handlePromise.reject && handlePromise.reject('Fail');
+}
+
+// const createBtn = document.querySelector("#btn-create-promise");
+// const resolveBtn = document.querySelector("#btn-resolve-promise");
+// const rejectBtn = document.querySelector("#btn-reject-promise");
+//
+//
+// createBtn && createBtn.addEventListener('click', () => createPromise);
+// resolveBtn && resolveBtn.addEventListener('click', () => resolvePromise);
+// rejectBtn && rejectBtn.addEventListener('click', () => rejectPromise);
+
 
 
 // Task 06
