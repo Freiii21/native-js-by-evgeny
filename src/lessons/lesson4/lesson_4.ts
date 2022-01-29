@@ -1,3 +1,5 @@
+import {log} from 'util';
+
 console.log('lesson 4');
 
 // http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
@@ -48,52 +50,52 @@ console.log('lesson 4');
 // описаного выше объекта: свойство promise получает новый созданный промис,
 // свойства resolve и reject получают ссылки на соответствующие функции
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
-type objType = {
-    promise: null | Promise<any>;
-    resolve: null | Function;
-    reject: null | Function;
-    onSuccess: (paramName: string) => void;
-    onError: (paramName: string) => void;
-};
-
-const handlePromise:objType = {
-    promise: null,
-    resolve: null,
-    reject: null,
-    onSuccess(paramName){
-        console.log(`Promise is resolved with data: ${paramName}`);
-    },
-    onError(paramName){
-        console.log(`Promise is rejected with error: ${paramName}`);
-    }
-}
-
-export const createPromise = () => {
-    handlePromise.promise = new Promise((res, rej) => {
-        handlePromise.resolve = res;
-        handlePromise.reject = rej;
-    })
-    handlePromise.promise
-        .then(handlePromise.onSuccess)
-        .catch(handlePromise.onError)
-    //@ts-ignore
-    window.value = handlePromise;
-}
-export const resolvePromise = () => {
-    handlePromise.resolve && handlePromise.resolve('Success');
-}
-export const rejectPromise = () => {
-    handlePromise.reject && handlePromise.reject('Fail');
-}
+// type objType = {
+//     promise: null | Promise<any>;
+//     resolve: null | Function;
+//     reject: null | Function;
+//     onSuccess: (paramName: string) => void;
+//     onError: (paramName: string) => void;
+// };
+//
+// const handlePromise:objType = {
+//     promise: null,
+//     resolve: null,
+//     reject: null,
+//     onSuccess(paramName){
+//         console.log(`Promise is resolved with data: ${paramName}`);
+//     },
+//     onError(paramName){
+//         console.log(`Promise is rejected with error: ${paramName}`);
+//     }
+// }
+//
+// export const createPromise = () => {
+//     handlePromise.promise = new Promise((res, rej) => {
+//         handlePromise.resolve = res;
+//         handlePromise.reject = rej;
+//     })
+//     handlePromise.promise
+//         .then(handlePromise.onSuccess)
+//         .catch(handlePromise.onError)
+//     //@ts-ignore
+//     window.value = handlePromise;
+// }
+// export const resolvePromise = () => {
+//     handlePromise.resolve && handlePromise.resolve('Success');
+// }
+// export const rejectPromise = () => {
+//     handlePromise.reject && handlePromise.reject('Fail');
+// }
 
 // const createBtn = document.querySelector("#btn-create-promise");
 // const resolveBtn = document.querySelector("#btn-resolve-promise");
 // const rejectBtn = document.querySelector("#btn-reject-promise");
 //
 //
-// createBtn && createBtn.addEventListener('click', () => createPromise);
-// resolveBtn && resolveBtn.addEventListener('click', () => resolvePromise);
-// rejectBtn && rejectBtn.addEventListener('click', () => rejectPromise);
+// createBtn && createBtn.addEventListener('click', () => createPromise());
+// resolveBtn && resolveBtn.addEventListener('click', () => resolvePromise());
+// rejectBtn && rejectBtn.addEventListener('click', () => rejectPromise());
 
 
 
@@ -103,6 +105,20 @@ export const rejectPromise = () => {
 // прибавляет к нему Ваше имя и возвращает новую строку из функции
 // Создайте функцию print, которая выводит в консоль значение своего параметра
 // Добавьте два метода then и передайте созданные функции.
+// new Promise ((res => {
+//     setTimeout(()=>{
+//         res("My name is ")
+//     },1000)
+// }))
+//     .then(data => onSuccess(data))
+//     .then(result => print(result))
+//
+// const onSuccess = (value: any) => {
+//     return value + "Igor";
+// }
+// const print = (value: string) => {
+//     console.log(value);
+// }
 
 
 // Task 7
@@ -110,7 +126,26 @@ export const rejectPromise = () => {
 // второй промис возвращает объект {age: 16} через 3 с, а третий {city: ''} через 4с.
 // Получите результаты работы промисов, объедините свойства объектов
 // и выведите в консоль {name, age, city}
-
+// const pr1 = new Promise ((res, rej) => {
+//     setTimeout(() => {
+//         res({ name: "Anna" });
+//     }, 2000)
+// })
+// const pr2 = new Promise ((res, rej) => {
+//     setTimeout(() => {
+//         res({ age: 16 });
+//     }, 3000)
+// })
+// const pr3 = new Promise ((res, rej) => {
+//     setTimeout(() => {
+//         res({ city: "" });
+//     }, 4000)
+// })
+//
+// Promise.all([pr1, pr2, pr3])
+//     .then(data => console.log(data))
+//
+//
 
 
 // just a plug
