@@ -25,15 +25,23 @@ console.log('Lesson 5');
 // Дан объект someObj, реализуйте функцию greeting и присвойте ее ключу объекта с аналогичным именем.
 // Функция должна вернуть строку `My name is ${name}. I am ${age}`, где name и age берутся из свойств объекта
 
-type someObjType = {
-    name: string;
-    age: number;
-}
+// type someObjType = {
+//     name: string;
+//     age: number;
+//     greeting: () => void
+// }
+//
+// let someObj:someObjType = {
+//     name: 'Eugene',
+//     age: 32,
+//     greeting (){
+//         console.log(`My name is ${this.name}. I am ${this.age}`)
+//     }
+// }
+//
+//
+// someObj.greeting()
 
-let someObj:someObjType = {
-    name: 'Eugene',
-    age: 32
-}
 
 // Task 02
 // реализовать счетчик counter в виде объекта со следующими методами:
