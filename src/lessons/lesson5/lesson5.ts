@@ -52,6 +52,34 @@ console.log('Lesson 5');
 // rest current count - устанавливает значение счетчика равным 0
 // все методы должны ссылаться на сам объект
 
+// const counter = {
+//     count: 0,
+//     getCurrentCount(){
+//         console.log(this.count)
+//     },
+//     increment(){
+//         this.count++;
+//         console.log(this.count)
+//     },
+//     decrement(){
+//         this.count--;
+//         console.log(this.count)
+//     },
+//     setCurrentCount(num: number){
+//         this.count = num;
+//         console.log(this.count)
+//     },
+//     resetCurrentCount(){
+//         this.count = 0;
+//         console.log(this.count)
+//     }
+// }
+// counter.getCurrentCount();
+// counter.increment();
+// counter.decrement();
+// counter.setCurrentCount(5);
+// counter.resetCurrentCount();
+
 // Task 03
 // переделайте код из Task 02, что бы сработал следующий код:
 // counter.setCurrentCount(10).increment().increment().increment().decrement().getCurrentCount() // 12
